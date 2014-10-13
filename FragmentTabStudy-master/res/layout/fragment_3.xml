@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bk_all"
+    android:orientation="vertical" >
+
+    <include layout="@layout/fragment_title" />
+
+    <Button
+        android:id="@+id/measur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
+        android:background="@drawable/bluetitle"
+        android:drawableRight="@drawable/right"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:scaleType="fitCenter"
+        android:text="开始测试"
+        android:textColor="@color/white" >
+    </Button>
+
+    <com.yhz.tem.yh.ch.temp.view.DrawerHScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0" >
+
+        <GridView
+            android:id="@+id/measur_disease"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:numColumns="3" >
+        </GridView>
+    </com.yhz.tem.yh.ch.temp.view.DrawerHScrollView>
+
+</LinearLayout>

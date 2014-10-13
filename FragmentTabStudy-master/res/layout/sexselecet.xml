@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sexCheck"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <RadioButton
+        android:id="@+id/boy_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:button="@null"
+        android:checked="true"
+        android:drawableTop="@drawable/selcet_boy_btn"
+        android:gravity="center"
+        android:text="男"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical" >
+
+        <com.yhz.tem.yh.ch.temp.view.CircleImageView
+            android:id="@+id/chose_statiu"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:onClick="onClick"
+            android:src="@drawable/statiu"
+            app:border_color="@android:color/black"
+            app:border_width="2dp" />
+
+        <TextView
+            android:id="@+id/changed_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Martin"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <RadioButton
+        android:id="@+id/gril_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:button="@null"
+        android:drawableTop="@drawable/selcet_girl_btn"
+        android:gravity="center"
+        android:text="女"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+</RadioGroup>

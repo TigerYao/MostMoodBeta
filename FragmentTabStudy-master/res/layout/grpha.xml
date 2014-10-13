@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bk_all"
+    android:orientation="vertical" >
+
+    <include layout="@layout/fragment_title" />
+
+    <RadioGroup
+        android:id="@+id/changeTime"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/chang_time_bk"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/dayid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/selcet_day_btn"
+            android:gravity="center"
+            android:text="天"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/weekid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:button="@null"
+            android:drawableTop="@drawable/selcet_week_btn"
+            android:gravity="center"
+            android:text="周"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/mouthid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:button="@null"
+            android:drawableTop="@drawable/selcet_mouth_btn"
+            android:gravity="center"
+            android:text="月"
+            android:textColor="@color/black" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/auto_get"
+            android:gravity="center"
+            android:paddingRight="10dp "
+            android:text="   自动获取" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/input_get"
+            android:gravity="center"
+            android:text="   手动输入" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0" >
+
+        <com.yhz.tem.yh.ch.temp.view.TemperatureViewGraph
+            android:id="@+id/scrollerTem"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent" />
+
+        <com.yhz.tem.yh.ch.temp.view.CopyOfTemperatureView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+</LinearLayout>

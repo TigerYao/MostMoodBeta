@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item  type="id" name="tab_back">false</item>
+      <item  type="id" name="tem_list">false</item>
+       <item  type="id" name="tem_list_fresh">false</item>
+</resources>

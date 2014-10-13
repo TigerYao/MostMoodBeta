@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+ <include layout="@layout/fragment_title" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/baike_bk_title"
+        android:gravity="center" >
+
+        <ImageButton
+            android:id="@+id/baike_click_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:background="@null"
+            android:clickable="false"
+            android:gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baike_left" />
+
+        <ImageSwitcher
+            android:id="@+id/imageswitcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:scaleType="fitCenter" >
+        </ImageSwitcher>
+
+        <ImageButton
+            android:id="@+id/baike_click_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baike_right" />
+    </LinearLayout>
+
+    <include layout="@layout/viewpageui" />
+
+</LinearLayout>
