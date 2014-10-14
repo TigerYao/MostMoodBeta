@@ -17,7 +17,7 @@ public class BaseFragment extends Fragment {
 
     public boolean onBackPressed() {
         return false;
-    }
+	}
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 

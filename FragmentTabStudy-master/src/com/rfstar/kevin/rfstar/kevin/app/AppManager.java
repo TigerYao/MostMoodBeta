@@ -17,61 +17,58 @@ import android.widget.Toast;
 import com.rfstar.kevin.rfstar.kevin.params.CubicBLEDevice;
 
 /*
- ¹ÜÀíËùÓÐµÄ À¶ÑÀÉè±¸ 
- * 			¹¦ÄÜ:
- * 			   1)É¨ÃèËùÓÐµÄÀ¶ÑÀÉè±¸ 
- * 			   2)ÅÐ¶ÏÀ¶ÑÀÈ¨ÏÞÊÇ·ñ´ò¿ª
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ 
+ * 			ï¿½ï¿½ï¿½ï¿½:
+ * 			   1)É¨ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ 
+ * 			   2)ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½Ç·ï¿½ï¿½
  * @author Kevin.wu
  *
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class AppManager {
-	private static int SCAN_TIME = 10000; // É¨ÃèµÄÊ±¼äÎª10Ãë
-	private static final int REQUEST_CODE = 0x01;// ·µ»ØµÄÎ¨Ò»±êÊ¶
+	private static int SCAN_TIME = 10000; // É¨ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îª10ï¿½ï¿½
+	private static final int REQUEST_CODE = 0x01;// ï¿½ï¿½ï¿½Øµï¿½Î¨Ò»ï¿½ï¿½Ê¶
 	private Context context = null;
 	public static BluetoothAdapter bleAdapter = null;
 
 	private Handler handler = null;
-	private boolean isScanning = false; // ÊÇ·ñÕýÔÚÉ¨Ãè
+	private boolean isScanning = false; // ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½
 
 	private RFStarManageListener listener = null;
 
-	private ArrayList<BluetoothDevice> scanBlueDeviceArray = new ArrayList<BluetoothDevice>(); // É¨Ãèµ½µÄÊý¾Ý
+	private ArrayList<BluetoothDevice> scanBlueDeviceArray = new ArrayList<BluetoothDevice>(); // É¨ï¿½èµ½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	public BluetoothDevice bluetoothDevice = null; // Ñ¡ÖÐµÄÉè±¸
-	public CubicBLEDevice cubicBLEDevice = null; // Ñ¡ÖÐµÄcubicBLEDevice
+	public BluetoothDevice bluetoothDevice = null; // Ñ¡ï¿½Ðµï¿½ï¿½è±¸
+	public CubicBLEDevice cubicBLEDevice = null; // Ñ¡ï¿½Ðµï¿½cubicBLEDevice
 
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 	public AppManager(Context context) {
 		// TODO Auto-generated constructor stub
 		handler = new Handler();
-		if (!context.getPackageManager().hasSystemFeature( // ¼ì²ìÏµÍ³ÊÇ·ñ°üº¬À¶ÑÀµÍ¹¦ºÄµÄjar°ü
+		if (!context.getPackageManager().hasSystemFeature( // ï¿½ï¿½ï¿½ÏµÍ³ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½Äµï¿½jarï¿½ï¿½
 				PackageManager.FEATURE_BLUETOOTH_LE)) {
-			Toast.makeText(context, "²»°üº¬À¶ÑÀ4.0µÄ±ê×¼Jar°ü", Toast.LENGTH_SHORT)
-					.show();
+			Toast.makeText(context, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4.0ï¿½Ä±ï¿½×¼Jarï¿½ï¿½", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		this.context = context;
-		BluetoothManager manager = (BluetoothManager) this.context
-				.getSystemService(Context.BLUETOOTH_SERVICE);
+		BluetoothManager manager = (BluetoothManager) this.context.getSystemService(Context.BLUETOOTH_SERVICE);
 		bleAdapter = manager.getAdapter();
 
-		if (bleAdapter == null) { // ¼ì²ìÊÖ»úÓ²¼þÊÇ·ñÖ§³ÖÀ¶ÑÀµÍ¹¦ºÄ
-			Toast.makeText(context, "²»Ö§³ÖbleÀ¶ÑÀ4.0", Toast.LENGTH_SHORT).show();
+		if (bleAdapter == null) { // ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ó²ï¿½ï¿½ï¿½Ç·ï¿½Ö§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½
+			Toast.makeText(context, "ï¿½ï¿½Ö§ï¿½ï¿½bleï¿½ï¿½ï¿½ï¿½4.0", Toast.LENGTH_SHORT).show();
 			return;
 		}
 	}
 
 	/**
-	 * ÅÐ¶ÏÊÇ·ñ¿ªÆôÀ¶ÑÀÈ¨ÏÞ
+	 * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½
 	 * 
 	 * @return
 	 */
 	public boolean isEdnabled(Activity activity) {
 		if (!bleAdapter.isEnabled()) {
 			if (!bleAdapter.isEnabled()) {
-				Intent enableBtIntent = new Intent(
-						BluetoothAdapter.ACTION_REQUEST_ENABLE);
+				Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 				activity.startActivityForResult(enableBtIntent, REQUEST_CODE);
 			}
 			return true;
@@ -84,7 +81,7 @@ public class AppManager {
 	}
 
 	/**
-	 * ÉèÖÃÈ¨ÏÞºó£¬·µ»ØÊ±µ÷ÓÃ
+	 * ï¿½ï¿½ï¿½ï¿½È¨ï¿½Þºó£¬·ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param requestCode
 	 * @param resultCode
@@ -92,15 +89,14 @@ public class AppManager {
 	 */
 	public void onRequestResult(int requestCode, int resultCode, Intent data) {
 		// User chose not to enable Bluetooth.
-		if (requestCode == REQUEST_CODE
-				&& resultCode == Activity.RESULT_CANCELED) {
+		if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_CANCELED) {
 			((Activity) this.context).finish();
 			return;
 		}
 	}
 
 	/**
-	 * É¨ÃèÀ¶ÑÀÉè±¸
+	 * É¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸
 	 */
 	public void startScanBluetoothDevice() {
 		if (scanBlueDeviceArray != null) {
@@ -114,7 +110,7 @@ public class AppManager {
 				// TODO Auto-generated method stub
 				stopScanBluetoothDevice();
 			}
-		}, SCAN_TIME); // 10ÃëºóÍ£Ö¹É¨Ãè
+		}, SCAN_TIME); // 10ï¿½ï¿½ï¿½Í£Ö¹É¨ï¿½ï¿½
 		isScanning = true;
 
 		bleAdapter.startLeScan(bleScanCallback);
@@ -122,7 +118,7 @@ public class AppManager {
 	}
 
 	/**
-	 * Í£Ö¹É¨ÃèÀ¶ÑÀÉè±¸
+	 * Í£Ö¹É¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸
 	 */
 	public void stopScanBluetoothDevice() {
 		if (isScanning) {
@@ -135,9 +131,8 @@ public class AppManager {
 	// Device scan callback.
 	private BluetoothAdapter.LeScanCallback bleScanCallback = new BluetoothAdapter.LeScanCallback() {
 		@Override
-		public void onLeScan(final BluetoothDevice device, final int rssi,
-				final byte[] scanRecord) {
-			// TODO Ìí¼ÓÉ¨Ãèµ½µÄdevice£¬²¢Ë¢ÐÂÊý¾Ý
+		public void onLeScan(final BluetoothDevice device, final int rssi, final byte[] scanRecord) {
+			// TODO ï¿½ï¿½ï¿½É¨ï¿½èµ½ï¿½ï¿½deviceï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½
 			handler.post(new Runnable() {
 				@Override
 				public void run() {
@@ -146,8 +141,7 @@ public class AppManager {
 					if (!scanBlueDeviceArray.contains(device)) {
 						scanBlueDeviceArray.add(device);
 
-						listener.RFstarBLEManageListener(device, rssi,
-								scanRecord);
+						listener.RFstarBLEManageListener(device, rssi, scanRecord);
 					}
 				}
 			});
@@ -155,7 +149,7 @@ public class AppManager {
 	};
 
 	/**
-	 * Ã¿É¨Ãèµ½Ò»¸öÀ¶ÑÀÉè±¸µ÷ÓÃÒ»´Î
+	 * Ã¿É¨ï¿½èµ½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 	 * 
 	 * @param listener
 	 */
@@ -164,14 +158,13 @@ public class AppManager {
 	}
 
 	/**
-	 * ÓÃÓÚ´¦Àí£¬Ë¢ÐÂµ½Éè±¸Ê±¸üÐÂ½çÃæ
+	 * ï¿½ï¿½ï¿½Ú´ï¿½ï¿½?Ë¢ï¿½Âµï¿½ï¿½è±¸Ê±ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½
 	 * 
 	 * @author Kevin.wu
 	 * 
 	 */
 	public interface RFStarManageListener {
-		public void RFstarBLEManageListener(BluetoothDevice device, int rssi,
-				byte[] scanRecord);
+		public void RFstarBLEManageListener(BluetoothDevice device, int rssi, byte[] scanRecord);
 
 		public void RFstarBLEManageStartScan();
 
