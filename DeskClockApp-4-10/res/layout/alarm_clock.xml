@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<!--
+     Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,16 +19,16 @@
     android:id="@+id/base_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background"
-    android:orientation="vertical"> 
+    android:orientation="vertical" >
 
-    <LinearLayout android:id="@+id/add_alarm"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@android:drawable/list_selector_background"
+    <LinearLayout
+        android:id="@+id/add_alarm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@drawable/title"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal" >
 
         <ImageView
             style="@style/alarm_list_left_column"
@@ -37,21 +38,20 @@
             android:src="@drawable/add_alarm" />
 
         <TextView
-            android:duplicateParentState="true"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:text="@string/add_alarm"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="?android:attr/textColorPrimary"
-            android:text="@string/add_alarm" />
-
+            android:textColor="?android:attr/textColorPrimary" />
     </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
         android:gravity="fill_horizontal"
+        android:scaleType="fitXY"
         android:src="@android:drawable/divider_horizontal_dark" />
 
     <ListView
@@ -60,7 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-    <!-- <LinearLayout
+    <!--
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -99,6 +100,7 @@
 
       </com.cn.daming.deskclock.DigitalClock>
 
-    </LinearLayout> -->
+    </LinearLayout>
+    -->
 
 </LinearLayout>

@@ -42,7 +42,9 @@ int drawable ic_menu_desk_clock 0x7f020025
 int drawable incall_round_button 0x7f020026
 int drawable indicator_clock_onoff 0x7f020027
 int drawable list_selector_background_pressed 0x7f020028
-int drawable stat_notify_alarm 0x7f020029
+int drawable shadow 0x7f020029
+int drawable stat_notify_alarm 0x7f02002a
+int drawable title 0x7f02002b
 int id add_alarm 0x7f0a0006
 int id alarm_delete 0x7f0a0012
 int id alarm_revert 0x7f0a0011
